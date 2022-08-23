@@ -4,8 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Table (name="Wine")
 @Entity
-@Table=(name"Wine")
+
 public class Wine {
 
     @Id
