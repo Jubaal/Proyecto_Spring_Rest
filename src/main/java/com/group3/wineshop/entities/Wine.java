@@ -2,8 +2,10 @@ package com.group3.wineshop.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table=(name"Wine")
 public class Wine {
 
     @Id
