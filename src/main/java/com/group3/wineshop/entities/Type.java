@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="rdbm")
+@Table(name="type")
 public class Type {
 
     @Id
