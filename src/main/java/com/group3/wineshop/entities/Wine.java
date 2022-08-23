@@ -4,40 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table (name="Wine")
-@Entity
 
+@Entity
+@Table(name="wine")
 public class Wine {
 
     @Id
     private int id;
     private String name;
-    private int year;
-    private Float rating;
-    private int num_reviews;
-    private Float price;
-    private int body;
-    private int acidity;
-    private int winery_id;
-    private int type_id;
-    private int region_id;
+    private String year;
+    private int wineryId;
+    private int typeId;
+    private int regionId;
 
-    public Wine(){
+    public Wine() {
 
     }
 
-    public Wine(int id, String name, int year, Float rating, int num_reviews, Float price, int body, int acidity, int winery_id, int type_id, int region_id) {
+    public Wine(int id, String name, String year, int wineryId, int typeId, int regionId) {
         this.id = id;
         this.name = name;
         this.year = year;
-        this.rating = rating;
-        this.num_reviews = num_reviews;
-        this.price = price;
-        this.body = body;
-        this.acidity = acidity;
-        this.winery_id = winery_id;
-        this.type_id = type_id;
-        this.region_id = region_id;
+        this.wineryId = wineryId;
+        this.typeId = typeId;
+        this.regionId = regionId;
     }
 
     public int getId() {
@@ -56,75 +46,37 @@ public class Wine {
         this.name = name;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
-    public Float getRating() {
-        return rating;
+    public int getWineryId() {
+        return wineryId;
     }
 
-    public void setRating(Float rating) {
-        this.rating = rating;
+    public void setWineryId(int wineryId) {
+        this.wineryId = wineryId;
     }
 
-    public int getNum_reviews() {
-        return num_reviews;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setNum_reviews(int num_reviews) {
-        this.num_reviews = num_reviews;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
-    public Float getPrice() {
-        return price;
+    public int getRegionId() {
+        return regionId;
     }
 
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
-    public int getBody() {
-        return body;
-    }
-
-    public void setBody(int body) {
-        this.body = body;
-    }
-
-    public int getAcidity() {
-        return acidity;
-    }
-
-    public void setAcidity(int acidity) {
-        this.acidity = acidity;
-    }
-
-    public int getWinery_id() {
-        return winery_id;
-    }
-
-    public void setWinery_id(int winery_id) {
-        this.winery_id = winery_id;
-    }
-
-    public int getType_id() {
-        return type_id;
-    }
-
-    public void setType_id(int type_id) {
-        this.type_id = type_id;
-    }
-
-    public int getRegion_id() {
-        return region_id;
-    }
-
-    public void setRegion_id(int region_id) {
-        this.region_id = region_id;
+    public void setRegionId(int regionId) {
+        this.regionId = regionId;
     }
 }
+
+
