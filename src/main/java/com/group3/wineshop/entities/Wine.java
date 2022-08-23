@@ -14,12 +14,12 @@ public class Wine {
     private String name;
     private int year;
     private Float rating;
-    private int num_reviews;
+    private int numReviews;
     private Float price;
     private int body;
     private int acidity;
-    private int winery_id;
-    private int type_id;
+    private int wineryId;
+    private int typeId;
     private int region_id;
 
     public Wine(){
@@ -31,12 +31,12 @@ public class Wine {
         this.name = name;
         this.year = year;
         this.rating = rating;
-        this.num_reviews = num_reviews;
+        this.numReviews = num_reviews;
         this.price = price;
         this.body = body;
         this.acidity = acidity;
-        this.winery_id = winery_id;
-        this.type_id = type_id;
+        this.wineryId = winery_id;
+        this.typeId = type_id;
         this.region_id = region_id;
     }
 
@@ -72,12 +72,12 @@ public class Wine {
         this.rating = rating;
     }
 
-    public int getNum_reviews() {
-        return num_reviews;
+    public int getNumReviews() {
+        return numReviews;
     }
 
-    public void setNum_reviews(int num_reviews) {
-        this.num_reviews = num_reviews;
+    public void setNumReviews(int num_reviews) {
+        this.numReviews = num_reviews;
     }
 
     public Float getPrice() {
@@ -104,20 +104,20 @@ public class Wine {
         this.acidity = acidity;
     }
 
-    public int getWinery_id() {
-        return winery_id;
+    public int getWineryId() {
+        return wineryId;
     }
 
-    public void setWinery_id(int winery_id) {
-        this.winery_id = winery_id;
+    public void setWineryId(int winery_id) {
+        this.wineryId = winery_id;
     }
 
-    public int getType_id() {
-        return type_id;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setType_id(int type_id) {
-        this.type_id = type_id;
+    public void setTypeId(int type_id) {
+        this.typeId = type_id;
     }
 
     public int getRegion_id() {
@@ -126,5 +126,22 @@ public class Wine {
 
     public void setRegion_id(int region_id) {
         this.region_id = region_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Wine{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", year=" + year +
+                ", rating=" + rating +
+                ", num_reviews=" + numReviews +
+                ", price=" + price +
+                ", body=" + body +
+                ", acidity=" + acidity +
+                ", winery_id=" + wineryId +
+                ", type_id=" + typeId +
+                ", region_id=" + region_id +
+                '}';
     }
 }
