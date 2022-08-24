@@ -42,11 +42,10 @@ public class TypeControllerTest {
 
     @Test
     void typeRequestFail() throws Exception{
-        assertThrows(Exception.class, ()->{
             mockMvc.perform(get("/api/type/0")
                             .contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().is5xxServerError());
-        });
+                    .andExpect(status().isNotFound());
+
 
 
     }

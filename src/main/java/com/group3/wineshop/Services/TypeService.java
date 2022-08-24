@@ -23,6 +23,7 @@ public class TypeService {
     }
 
     public Optional<Type> findById(Integer id){
+
         return typeRepository.findById(id);
     }
 
@@ -34,4 +35,8 @@ public class TypeService {
         response.put("deleted",Boolean.TRUE);
         return response;
     }
+
+    public Type update(Type type) { return typeRepository.saveAndFlush(type); }
+
+
 }

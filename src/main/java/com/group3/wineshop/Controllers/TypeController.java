@@ -31,4 +31,9 @@ public class TypeController {
     }
     @DeleteMapping("/api/type/{id}")
     public Map<String, Boolean> deleteTypeById(@PathVariable Integer id){ return typeService.delete(id); }
+
+    @PutMapping("/api/type")
+    public Type updateType(@RequestBody Type type) {
+        return typeService.update(type);
+    }
 }
