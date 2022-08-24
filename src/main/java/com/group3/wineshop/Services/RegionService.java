@@ -28,4 +28,8 @@ public class RegionService {
     public Region saveRegion(Region region){
         return regionRepository.save(region);
     }
+
+    public void update(Region r){
+        regionRepository.saveAndFlush(r);
+    }
 }

@@ -2,6 +2,7 @@ package com.group3.wineshop.Controllers;
 
 import com.group3.wineshop.Services.RegionService;
 import com.group3.wineshop.entities.Region;
+import com.group3.wineshop.entities.Winery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +33,10 @@ public class RegionController {
     public Region crearRegion(@RequestBody Region region){
         Region temp = regionService.saveRegion(region);
         return temp;
+    }
+
+    @PutMapping("/api/region")
+    public void updateWinery(@RequestBody Region r) {
+        regionService.update(r);
     }
 }
