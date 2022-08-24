@@ -22,4 +22,16 @@ public class WineryService {
 	public Optional<Winery> findById(Integer id){
 		return wineryRepository.findById(id);
 	}
+	
+	public void save(Winery winery) {
+		wineryRepository.save(winery);
+	}
+	
+	public void delete(int id) {
+		wineryRepository.deleteById(id);
+	}
+	
+	public void update(Winery winery) {
+		wineryRepository.saveAndFlush(winery);
+	}
 }
