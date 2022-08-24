@@ -20,4 +20,16 @@ public class RegionService {
     public Optional<Region> findById(Integer id){
         return regionRepository.findById(id);
     }
+
+    public void deleteById(Integer id) {
+        regionRepository.deleteById(id);
+    }
+
+    public Region saveRegion(Region region){
+        return regionRepository.save(region);
+    }
+
+    public void update(Region r){
+        regionRepository.saveAndFlush(r);
+    }
 }
