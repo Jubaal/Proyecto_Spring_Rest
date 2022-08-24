@@ -21,6 +21,20 @@ public class Wine {
     @Max(2022)
     private String year;
     @NotNull
+    private double rating;
+
+    @NotNull
+    private int numReviews;
+
+    @NotNull
+    private double price;
+
+    @NotNull
+    private String body;
+
+    @NotNull
+    private String acidity;
+    @NotNull
     private int wineryId;
     @NotNull
     private int typeId;
@@ -31,10 +45,15 @@ public class Wine {
 
     }
 
-    public Wine(int id, String name, String year, int wineryId, int typeId, int regionId) {
+    public Wine(int id, String name, String year, double rating, int numReviews, double price, String body, String acidity, int wineryId, int typeId, int regionId) {
         this.id = id;
         this.name = name;
         this.year = year;
+        this.rating = rating;
+        this.numReviews = numReviews;
+        this.price = price;
+        this.body = body;
+        this.acidity = acidity;
         this.wineryId = wineryId;
         this.typeId = typeId;
         this.regionId = regionId;
@@ -64,6 +83,46 @@ public class Wine {
         this.year = year;
     }
 
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public int getNumReviews() {
+        return numReviews;
+    }
+
+    public void setNumReviews(int numReviews) {
+        this.numReviews = numReviews;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getAcidity() {
+        return acidity;
+    }
+
+    public void setAcidity(String acidity) {
+        this.acidity = acidity;
+    }
+
     public int getWineryId() {
         return wineryId;
     }
@@ -88,5 +147,3 @@ public class Wine {
         this.regionId = regionId;
     }
 }
-
-
