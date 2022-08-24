@@ -24,25 +24,23 @@ public class TypeService {
         return typeRepository.findAll();
     }
 
-    public ResponseEntity<Optional<Type>> findById(Integer id){
-
-
-
-        return new ResponseEntity<Optional<Type>>(typeRepository.findById(id), HttpStatus.FOUND);
+    public Optional<Type> findById(Integer id){
+        return typeRepository.findById(id);
     }
 
 
 
-    public Type save(Type type) { return typeRepository.save(type); }
+    public Type save(Type type) {
+        return typeRepository.save(type);
+    }
 
-    public Map<String,Boolean> delete(int id){
+    public void delete(int id){
         typeRepository.deleteById(id);
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("deleted",Boolean.TRUE);
-        return response;
     }
 
-    public Type update(Type type) { return typeRepository.saveAndFlush(type); }
+    public Type update(Type type) {
+        return typeRepository.saveAndFlush(type);
+    }
 
 
 }
