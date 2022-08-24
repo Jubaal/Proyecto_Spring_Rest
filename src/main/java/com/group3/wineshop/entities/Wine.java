@@ -1,9 +1,11 @@
 package com.group3.wineshop.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 
 @Entity
@@ -11,10 +13,18 @@ import javax.persistence.Table;
 public class Wine {
     @Id
     private int id;
+    @NotEmpty
+    @NotNull
     private String name;
+    @NotNull
+    @Min(1900)
+    @Max(2022)
     private String year;
+    @NotNull
     private int wineryId;
+    @NotNull
     private int typeId;
+    @NotNull
     private int regionId;
 
     public Wine() {

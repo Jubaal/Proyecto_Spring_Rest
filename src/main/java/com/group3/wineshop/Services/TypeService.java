@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import com.group3.wineshop.entities.Winery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.group3.wineshop.Repositories.TypeRepository;
@@ -23,20 +25,22 @@ public class TypeService {
     }
 
     public Optional<Type> findById(Integer id){
-
         return typeRepository.findById(id);
     }
 
-    public Type save(Type type) { return typeRepository.save(type); }
 
-    public Map<String,Boolean> delete(int id){
-        typeRepository.deleteById(id);
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("deleted",Boolean.TRUE);
-        return response;
+
+    public Type save(Type type) {
+        return typeRepository.save(type);
     }
 
-    public Type update(Type type) { return typeRepository.saveAndFlush(type); }
+    public void delete(int id){
+        typeRepository.deleteById(id);
+    }
+
+    public Type update(Type type) {
+        return typeRepository.saveAndFlush(type);
+    }
 
 
 }

@@ -2,9 +2,12 @@ package com.group3.wineshop.Controllers;
 
 import com.group3.wineshop.Repositories.WineRepository;
 import com.group3.wineshop.Services.WineService;
+import com.group3.wineshop.entities.Region;
 import com.group3.wineshop.entities.Wine;
 import com.group3.wineshop.entities.Winery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,11 +34,14 @@ public class WineController {
     }
 
     @PostMapping("api/wine")
-    public void saveWine (@RequestBody Wine wine){wineService.saveWine(wine);
+    public ResponseEntity<Wine> saveWine (@RequestBody Wine wine){
 
+        Wine tempo = wineService.saveWine(wine);
+        return new ResponseEntity<Wine>(tempo, HttpStatus.CREATED);
     }
+
     @PutMapping("/api/wine")
-    public void updateWine(@RequestBody Wine wine) {wineService.update(wine);
+    public Wine updateWine(@RequestBody Wine wine) {return wineService.update(wine);
     }
 
 }

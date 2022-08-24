@@ -22,12 +22,12 @@ public class WineService {
         return wineRepository.findById(id);
     }
 
-    public void deleteById(Integer id){ wineRepository.deleteById(id); }
+    public void deleteById(Integer id){ wineRepository.deleteById(id);}
 
-    public void saveWine( Wine wine){wineRepository.save(wine);
+    public Wine saveWine( Wine wine){return wineRepository.save(wine);
     }
-    public void update(Wine wine) {
-        wineRepository.saveAndFlush(wine);
+    public Wine update(Wine wine) {
+        return wineRepository.saveAndFlush(wine);
     }
 }
 
