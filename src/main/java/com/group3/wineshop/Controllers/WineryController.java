@@ -38,7 +38,7 @@ public class WineryController {
 	
 	@PostMapping("/api/winery")
 	public ResponseEntity postWinery(@RequestBody Winery w) {
-		if(this.getWineryById(w.getId()).getBody().isEmpty()) {
+		if(wineryService.findById(w.getId()).isEmpty()) {
 			wineryService.save(w);
 			return new ResponseEntity(HttpStatus.CREATED);
 		} else {
@@ -48,13 +48,17 @@ public class WineryController {
 	
 	@DeleteMapping("/api/winery/{id}")
 	public ResponseEntity deleteWinery(@PathVariable Integer id) {
-		wineryService.delete(id);
-		return new ResponseEntity(HttpStatus.NO_CONTENT);
+		if(wineryService.findById(id).isPresent()) {
+			wineryService.delete(id);
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		} else {
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@PutMapping("/api/winery")
 	public ResponseEntity updateWinery(@RequestBody Winery w) {
-		if(this.getWineryById(w.getId()).getBody().isPresent()) {
+		if(wineryService.findById(w.getId()).isPresent()) {
 			wineryService.update(w);
 			return new ResponseEntity(HttpStatus.OK);
 		} else {
