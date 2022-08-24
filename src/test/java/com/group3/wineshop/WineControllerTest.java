@@ -26,7 +26,7 @@ public class WineControllerTest {
         void mostrarTodos() throws Exception{
             mockMvc.perform(MockMvcRequestBuilders
                     .get("/api/wine")
-                    .contentType("application/txt"))
+                    .contentType("application/json"))
                     .andExpect(status().isOk());
         }
 

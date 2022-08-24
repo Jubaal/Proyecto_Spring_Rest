@@ -1,7 +1,9 @@
 package com.group3.wineshop;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.group3.wineshop.Controllers.RegionController;
+import com.group3.wineshop.entities.Region;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.*;
 
@@ -42,6 +46,36 @@ public class RegionControllerTest {
                 .andExpect(jsonPath("$.id",Matchers.is(1)))
                 .andExpect(jsonPath("$.name", Matchers.is("Toro"))
         );
+    }
+
+    @Test
+    void modificarRegion() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/region")
+                        .content(asJsonString(new Region(76,"Hospitalet", "Espana")))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id",Matchers.is(76)))
+                .andExpect(jsonPath("$.name",Matchers.is("Hospitalet")))
+                .andExpect(jsonPath("$.country",Matchers.is("America"))
+                );
+    }
+
+    @Test
+    void eliminarporId() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/region/{id}",70))
+                .andExpect(status().isOk()
+        );
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -36,7 +36,7 @@ public class RegionController {
     }
 
     @PutMapping("/api/region")
-    public void updateWinery(@RequestBody Region r) {
+    public void modificarRegion(@RequestBody Region r) {
         regionService.update(r);
     }
 }
