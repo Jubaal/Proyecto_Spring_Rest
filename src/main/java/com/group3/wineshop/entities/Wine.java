@@ -18,21 +18,29 @@ public class Wine {
     private String name;
     @NotNull
     @Min(1900)
-    @Max(2022)
+    @Max(2023)
     private String year;
     @NotNull
+    @Min(0)
+    @Max(6)
     private double rating;
 
     @NotNull
+    @Min(0)
     private int numReviews;
 
     @NotNull
+    @Min(0)
     private double price;
 
     @NotNull
+    @Min(0)
+    @Max(6)
     private String body;
 
     @NotNull
+    @Min(0)
+    @Max(6)
     private String acidity;
     @NotNull
     private int wineryId;
