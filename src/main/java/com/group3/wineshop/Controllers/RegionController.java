@@ -4,6 +4,8 @@ import com.group3.wineshop.Services.RegionService;
 import com.group3.wineshop.entities.Region;
 import com.group3.wineshop.entities.Winery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,10 +31,16 @@ public class RegionController {
         regionService.deleteById(id);
     }
 
-    @PostMapping("api/region")
+    /*@PostMapping("api/region")
     public Region crearRegion(@RequestBody Region region){
         Region temp = regionService.saveRegion(region);
         return temp;
+    }*/
+
+    @PostMapping("api/region")
+    public ResponseEntity<Region> crearRegion(@RequestBody Region region){
+        Region tmp = regionService.saveRegion(region);
+        return new ResponseEntity<Region>(tmp, HttpStatus.CREATED);
     }
 
     @PutMapping("/api/region")

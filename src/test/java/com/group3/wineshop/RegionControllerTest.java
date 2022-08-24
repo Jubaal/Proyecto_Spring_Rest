@@ -16,13 +16,13 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 import static java.nio.file.Paths.get;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static sun.nio.cs.Surrogate.is;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -33,7 +33,7 @@ public class RegionControllerTest {
     @Test
     void mostrarTodos() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders
-                .get("/api/region")
+                .get("/api/region").with(httpBasic("gft","eduardo"))
                 .contentType("application/json"))
                 .andExpect(status().isOk()
                 );
@@ -41,7 +41,7 @@ public class RegionControllerTest {
 
     @Test
     void mostrarRegionId() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/region/1")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/region/1").with(httpBasic("gft","eduardo"))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id",Matchers.is(1)))
@@ -67,6 +67,18 @@ public class RegionControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/region/{id}",70))
                 .andExpect(status().isOk()
         );
+    }
+
+    @Test
+    void crearRegion() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/region").with(httpBasic("gft","eduardo"))
+                .content(asJsonString(new Region(75, "Hospitalet", "Espana")))
+                        .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists()
+                );
+
     }
 
     public static String asJsonString(final Object obj) {
