@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -11,7 +14,11 @@ import javax.persistence.Table;
 public class Type {
 
     @Id
+    @NotNull
     private int id;
+
+    @NotEmpty
+    @NotNull
     private String name;
 
     public Type() {
