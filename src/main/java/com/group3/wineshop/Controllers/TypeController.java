@@ -23,29 +23,31 @@ public class TypeController {
     private TypeService typeService;
 
     @GetMapping("/api/type")
-    public List<Type> getType(){
-        return typeService.findAll();
+    public ResponseEntity<List<Type>> getType() {
+        return new ResponseEntity<List<Type>>(typeService.findAll(), HttpStatus.FOUND);
     }
 
     @GetMapping("/api/type/{id}")
     public ResponseEntity<Optional<Type>> getTypeById(@PathVariable Integer id) {
 
-        Type type = typeService.findById(id).getBody().orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+        //Type type = typeService.findById(id).getBody().orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
         
-        return typeService.findById(id);
+        return new ResponseEntity<Optional<Type>>(typeService.findById(id), HttpStatus.FOUND);
+
     }
-
-
 
     @PostMapping("/api/type")
-    public Type saveType(@RequestBody Type type){
-        return typeService.save(type);
+    public ResponseEntity<Type> saveType(@RequestBody Type type){
+
+        return new ResponseEntity<Type>(typeService.save(type), HttpStatus.CREATED);
     }
     @DeleteMapping("/api/type/{id}")
-    public Map<String, Boolean> deleteTypeById(@PathVariable Integer id){ return typeService.delete(id); }
+    public ResponseEntity<Optional<Type>> deleteTypeById(@PathVariable Integer id){
+        return new ResponseEntity<Optional<Type>>(typeService.findById(id), HttpStatus.ACCEPTED);
+    }
 
     @PutMapping("/api/type")
-    public Type updateType(@RequestBody Type type) {
-        return typeService.update(type);
+    public ResponseEntity<Type> updateType(@RequestBody Type type) {
+        return new ResponseEntity<Type>(typeService.update(type), HttpStatus.OK);
     }
 }
