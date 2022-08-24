@@ -1,6 +1,7 @@
 package com.group3.wineshop.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -36,4 +37,6 @@ public class Type {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

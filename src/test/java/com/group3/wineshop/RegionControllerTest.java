@@ -22,7 +22,6 @@ import static org.hamcrest.Matchers.*;
 import static java.nio.file.Paths.get;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static sun.nio.cs.Surrogate.is;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
