@@ -1,13 +1,12 @@
 package com.group3.wineshop.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "region")
 public class Region {
 
+    //@GeneratedValue(strategy= GenerationType.AUTO)
     @Id
     private int id;
     private String name;
