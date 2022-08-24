@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import com.group3.wineshop.entities.Winery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.group3.wineshop.Repositories.TypeRepository;
@@ -22,10 +24,14 @@ public class TypeService {
         return typeRepository.findAll();
     }
 
-    public Optional<Type> findById(Integer id){
+    public ResponseEntity<Optional<Type>> findById(Integer id){
 
-        return typeRepository.findById(id);
+
+
+        return new ResponseEntity<Optional<Type>>(typeRepository.findById(id), HttpStatus.FOUND);
     }
+
+
 
     public Type save(Type type) { return typeRepository.save(type); }
 
