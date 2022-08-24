@@ -2,6 +2,7 @@ package com.group3.wineshop.Services;
 
 import com.group3.wineshop.Repositories.WineRepository;
 import com.group3.wineshop.entities.Wine;
+import com.group3.wineshop.entities.Winery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +21,13 @@ public class WineService {
     public Optional<Wine> findById(Integer id){
         return wineRepository.findById(id);
     }
+
+    public void deleteById(Integer id){ wineRepository.deleteById(id); }
+
+    public void saveWine( Wine wine){wineRepository.save(wine);
+    }
+    public void update(Wine wine) {
+        wineRepository.saveAndFlush(wine);
+    }
 }
+
