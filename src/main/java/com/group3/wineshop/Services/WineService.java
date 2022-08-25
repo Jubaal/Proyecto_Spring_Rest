@@ -30,5 +30,9 @@ public class WineService {
         return wineRepository.saveAndFlush(wine);
     }
 
+    public List<Wine> findByYear(String year) {
+       return wineRepository.findByYear(year);
+    }
+
 }
 
