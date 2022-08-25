@@ -38,4 +38,15 @@ public class RecomendController {
                 .limit(topRated)
                 .toList(),new HttpHeaders(), HttpStatus.OK);
     }
+
+    @GetMapping("/api/recommend/bang")
+    public ResponseEntity<List<Wine>> getbestBang(@RequestParam(name = "top", required = false, defaultValue = "10") Integer topRated){
+
+        Comparator<Wine> comparadorCalidad= Comparator.comparing(Wine::getRating);
+        Comparator<Wine> comparadorPrecio= Comparator.comparing(Wine::getPrice);
+        return new ResponseEntity(wineService.findAll().stream()
+                .sorted(comparadorCalidad.thenComparing(comparadorPrecio))
+                .limit(topRated)
+                .toList(),new HttpHeaders(), HttpStatus.OK);
+    }
 }
