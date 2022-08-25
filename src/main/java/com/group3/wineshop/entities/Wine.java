@@ -18,7 +18,7 @@ public class Wine {
     private String name;
     @NotNull
     @Min(1900)
-    @Max(2023)
+    @Max(2022)
     private String year;
     @NotNull
     @Min(0)

@@ -29,5 +29,7 @@ public class WineService {
     public Wine update(Wine wine) {
         return wineRepository.saveAndFlush(wine);
     }
+
+    public Wine getTopExpanWines(Wine wine){return wineRepository.}
 }
 
