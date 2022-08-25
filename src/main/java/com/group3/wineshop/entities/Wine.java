@@ -22,7 +22,7 @@ public class Wine {
     private String year;
     @NotNull
     @Min(0)
-    @Max(6)
+    @Max(5)
     private double rating;
 
     @NotNull
@@ -35,12 +35,12 @@ public class Wine {
 
     @NotNull
     @Min(0)
-    @Max(6)
+    @Max(5)
     private String body;
 
     @NotNull
     @Min(0)
-    @Max(6)
+    @Max(5)
     private String acidity;
     @NotNull
     private int wineryId;
