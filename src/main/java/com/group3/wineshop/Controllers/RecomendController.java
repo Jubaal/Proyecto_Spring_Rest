@@ -29,4 +29,13 @@ public class RecomendController {
                 .toList()
                 ,new HttpHeaders(), HttpStatus.OK);
     }
+    @GetMapping("/api/recommend/best")
+    public ResponseEntity<List<Wine>> getBestRated(@RequestParam(name = "top", required = false, defaultValue = "10") Integer topRated){
+
+        Comparator<Wine> comparador= Comparator.comparing(Wine::getRating);
+        return new ResponseEntity(wineService.findAll().stream()
+                .sorted(comparador.reversed())
+                .limit(topRated)
+                .toList(),new HttpHeaders(), HttpStatus.OK);
+    }
 }
